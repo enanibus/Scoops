@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0A65EE211DB7EBC400514920 /* AZSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE201DB7EBC400514920 /* AZSClient.framework */; };
 		0A65EE231DB7ECC800514920 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE221DB7ECC800514920 /* libxml2.2.tbd */; };
+		0A65EE2A1DB83BE400514920 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE291DB83BE400514920 /* MicrosoftAzureMobile.framework */; };
+		0A65EE2C1DB83D8300514920 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE2B1DB83D8300514920 /* WebKit.framework */; };
 		0A8130AA1DB04FEF0034F15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8130A91DB04FEF0034F15B /* AppDelegate.swift */; };
 		0A8130AC1DB04FEF0034F15B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8130AB1DB04FEF0034F15B /* ViewController.swift */; };
 		0A8130AF1DB04FEF0034F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8130AD1DB04FEF0034F15B /* Main.storyboard */; };
@@ -40,7 +42,8 @@
 		0A65EE201DB7EBC400514920 /* AZSClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AZSClient.framework; sourceTree = "<group>"; };
 		0A65EE221DB7ECC800514920 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		0A65EE241DB802EC00514920 /* Scoops-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scoops-Bridging-Header.h"; sourceTree = "<group>"; };
-		0A65EE281DB8243100514920 /* MyDependency-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyDependency-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A65EE291DB83BE400514920 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
+		0A65EE2B1DB83D8300514920 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0A8130A61DB04FEF0034F15B /* Scoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8130A91DB04FEF0034F15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8130AB1DB04FEF0034F15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A65EE2C1DB83D8300514920 /* WebKit.framework in Frameworks */,
 				0A65EE231DB7ECC800514920 /* libxml2.2.tbd in Frameworks */,
+				0A65EE2A1DB83BE400514920 /* MicrosoftAzureMobile.framework in Frameworks */,
 				0A65EE211DB7EBC400514920 /* AZSClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,9 +93,9 @@
 			isa = PBXGroup;
 			children = (
 				0A65EE221DB7ECC800514920 /* libxml2.2.tbd */,
+				0A65EE2B1DB83D8300514920 /* WebKit.framework */,
 				0A65EE201DB7EBC400514920 /* AZSClient.framework */,
-				0A65EE241DB802EC00514920 /* Scoops-Bridging-Header.h */,
-				0A65EE281DB8243100514920 /* MyDependency-Bridging-Header.h */,
+				0A65EE291DB83BE400514920 /* MicrosoftAzureMobile.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 		0A81309D1DB04FEF0034F15B = {
 			isa = PBXGroup;
 			children = (
+				0A65EE241DB802EC00514920 /* Scoops-Bridging-Header.h */,
 				0A65EE1F1DB7EB7700514920 /* Frameworks */,
 				0A8130A81DB04FEF0034F15B /* Scoops */,
 				0A8130C01DB04FEF0034F15B /* ScoopsTests */,
@@ -450,7 +456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.enanibus.Scoops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyDependency-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Scoops-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -470,7 +476,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.enanibus.Scoops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyDependency-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Scoops-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
