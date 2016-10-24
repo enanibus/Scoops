@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A14981B1DBE71A900D4940F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14981A1DBE71A900D4940F /* Post.swift */; };
 		0A65EE211DB7EBC400514920 /* AZSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE201DB7EBC400514920 /* AZSClient.framework */; };
 		0A65EE231DB7ECC800514920 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE221DB7ECC800514920 /* libxml2.2.tbd */; };
 		0A65EE2A1DB83BE400514920 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE291DB83BE400514920 /* MicrosoftAzureMobile.framework */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A14981A1DBE71A900D4940F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		0A65EE201DB7EBC400514920 /* AZSClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AZSClient.framework; sourceTree = "<group>"; };
 		0A65EE221DB7ECC800514920 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		0A65EE241DB802EC00514920 /* Scoops-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scoops-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -89,6 +91,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1498131DBE6ABD00D4940F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A14981A1DBE71A900D4940F /* Post.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0A1498141DBE6ACD00D4940F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0A1498151DBE6AD300D4940F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0A1498181DBE6B2300D4940F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0A1498191DBE6B3700D4940F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		0A65EE1F1DB7EB7700514920 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +163,11 @@
 		0A8130A81DB04FEF0034F15B /* Scoops */ = {
 			isa = PBXGroup;
 			children = (
+				0A1498181DBE6B2300D4940F /* Resources */,
+				0A1498191DBE6B3700D4940F /* Utils */,
+				0A1498141DBE6ACD00D4940F /* Views */,
+				0A1498151DBE6AD300D4940F /* Controllers */,
+				0A1498131DBE6ABD00D4940F /* Models */,
 				0A8130A91DB04FEF0034F15B /* AppDelegate.swift */,
 				0A8130AB1DB04FEF0034F15B /* ViewController.swift */,
 				0A8130AD1DB04FEF0034F15B /* Main.storyboard */,
@@ -295,6 +338,7 @@
 				0A8130AC1DB04FEF0034F15B /* ViewController.swift in Sources */,
 				0A8130B21DB04FEF0034F15B /* Scoops.xcdatamodeld in Sources */,
 				0A8130AA1DB04FEF0034F15B /* AppDelegate.swift in Sources */,
+				0A14981B1DBE71A900D4940F /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

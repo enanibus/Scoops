@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-//    var client: AZSCloudBlobClient?
-    var client: MSClient?
+//    var client1: AZSCloudBlobClient?
+//    var client2: MSClient?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
