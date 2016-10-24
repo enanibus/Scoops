@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A14981B1DBE71A900D4940F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14981A1DBE71A900D4940F /* Post.swift */; };
+		0A14981E1DBE819100D4940F /* AutorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14981C1DBE819100D4940F /* AutorTableViewController.swift */; };
+		0A14981F1DBE819100D4940F /* AutorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14981D1DBE819100D4940F /* AutorDetailViewController.swift */; };
 		0A65EE211DB7EBC400514920 /* AZSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE201DB7EBC400514920 /* AZSClient.framework */; };
 		0A65EE231DB7ECC800514920 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE221DB7ECC800514920 /* libxml2.2.tbd */; };
 		0A65EE2A1DB83BE400514920 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE291DB83BE400514920 /* MicrosoftAzureMobile.framework */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		0A14981A1DBE71A900D4940F /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		0A14981C1DBE819100D4940F /* AutorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorTableViewController.swift; sourceTree = "<group>"; };
+		0A14981D1DBE819100D4940F /* AutorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutorDetailViewController.swift; sourceTree = "<group>"; };
 		0A65EE201DB7EBC400514920 /* AZSClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AZSClient.framework; sourceTree = "<group>"; };
 		0A65EE221DB7ECC800514920 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		0A65EE241DB802EC00514920 /* Scoops-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scoops-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 		0A1498151DBE6AD300D4940F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A14981C1DBE819100D4940F /* AutorTableViewController.swift */,
+				0A14981D1DBE819100D4940F /* AutorDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -338,7 +344,9 @@
 				0A8130AC1DB04FEF0034F15B /* ViewController.swift in Sources */,
 				0A8130B21DB04FEF0034F15B /* Scoops.xcdatamodeld in Sources */,
 				0A8130AA1DB04FEF0034F15B /* AppDelegate.swift in Sources */,
+				0A14981F1DBE819100D4940F /* AutorDetailViewController.swift in Sources */,
 				0A14981B1DBE71A900D4940F /* Post.swift in Sources */,
+				0A14981E1DBE819100D4940F /* AutorTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
