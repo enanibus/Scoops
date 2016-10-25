@@ -13,40 +13,17 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-//    var client1: AZSCloudBlobClient?
-//    var client2: MSClient?
-    var client: MSClient?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         
-        let initVC = AutorTableViewController(style: .plain)
-        let navController: UINavigationController = UINavigationController(rootViewController: initVC)
-        self.window!.rootViewController = navController
+        let initVC = LoginViewController()
+        let navC: UINavigationController = UINavigationController(rootViewController: initVC)
+        self.window!.rootViewController = navC
         
         self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
-        
-//        self.client = MSClient(
-//            applicationURLString:"https://boot3-mbass.azurewebsites.net"
-//        )
-//        
-//        let delegate = UIApplication.shared.delegate as! AppDelegate
-//        let client = delegate.client!
-//        let item = ["text":"Awesome item"]
-//        let itemTable = client.table(withName: "TodoItem")
-//        itemTable.insert(item) {
-//            (insertedItem, error) in
-//            if (error != nil) {
-//                print("Error" + error.debugDescription);
-//            } else {
-//                print("Item inserted, id: ")
-//                print(insertedItem!["id"])
-//            }
-//        }
         
         return true
     }
