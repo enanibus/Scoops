@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 
-public let IS_IPHONE = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone
 public let defaults                             =   UserDefaults.standard
 public let NO_IMAGE_AVAILABLE                   =   "no-image-available.png"
 public let USER_ID                              =   "userId"

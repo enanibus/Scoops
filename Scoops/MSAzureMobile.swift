@@ -15,5 +15,5 @@ class MSAzureMobile: NSObject {
     
     static var client: MSClient = MSClient(applicationURL: URL(string: MOBILE_SERVICE)!)
     static var model: [Dictionary<String, AnyObject>]? = []
-    
+    static var posts: MSTable?
 }

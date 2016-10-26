@@ -20,6 +20,6 @@ struct Post {
     var estado: Bool
     var valoracion: Double
     var disponible: Bool
-    var containerName: String
+    var container: String
     
 }

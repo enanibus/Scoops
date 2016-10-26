@@ -17,7 +17,15 @@ class AuthorsTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.title = "Posts"
+        let addPost = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AuthorsTableViewController.addPost))
+        self.navigationItem.rightBarButtonItem = addPost
+        
+        self.tableView.register(UINib(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "postCell")
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,4 +100,74 @@ class AuthorsTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension AuthorsTableViewController {
+    
+    func addPost() {
+        
+        let tableMS = MSAzureMobile.client.table(withName: "Posts")
+        
+        tableMS.insert(["titulo" : "Post1",
+                        "texto" : "texto1",
+                        "foto" : "foto1",
+                        "latitud" : 1.1,
+                        "longitud" : 1.1,
+                        "autor" : "Jacobo Uno",
+                        "publicado" : false,
+                        "valoracion" : 1.1,
+                        "paraPublicar" : false,
+                        "container" : "container1"
+                        ])
+        { (result, error) in
+            
+            if let _ = error {
+                print(error)
+                return
+            }
+//            self.readAllItemsInTable()
+            print(result)
+        }
+    }
+}
+
+
+
+extension AuthorsTableViewController {
+    
+    func insertPost() {
+        
+        MSAzureMobile.client.invokeAPI("insertPost", body: ["titulo": "Titulo1", "texto": "texto1"], httpMethod: "POST", parameters: nil, headers: nil) { (result, response, error) in
+            
+            
+            if let _ = error {
+                print(error)
+                return
+            }
+            
+//            if !((self.model?.isEmpty)!) {
+//                self.model?.removeAll()
+//            }
+            
+            if let _ = result {
+            
+                print(result)
+                
+//                let json = result as! [AutorRecord]
+//                
+//                for item in json {
+//                    self.model?.append(item)
+//                }
+//                
+//                DispatchQueue.main.async {
+//                    
+//                    self.tableView.reloadData()
+//                }
+                
+            }
+            
+        }
+        
+        
+    }
 }

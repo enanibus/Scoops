@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
                 MSAzureMobile.client.currentUser = MSUser(userId: userLogged.userId)
                 MSAzureMobile.client.currentUser?.mobileServiceAuthenticationToken = userLogged.token
                 
-                let readersVC = AuthorsTableViewController()
+                let readersVC = ReadersTableViewController()
                 self.navigationController?.pushViewController(readersVC, animated: true)
             }
             
@@ -84,7 +84,7 @@ class LoginViewController: UIViewController {
                                         
                                         if let _ = user {
                                             addCredentialsToDefaults(withCurrentUser: user)
-                                            let readersVC = AuthorsTableViewController()
+                                            let readersVC = ReadersTableViewController()
                                             self.navigationController?.pushViewController(readersVC, animated: true)
                                         }
             })
