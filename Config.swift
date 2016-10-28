@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+enum StatusNews: Int{
+    case Todas = 0
+    case Publicadas = 1
+    case SinPublicar = 2
+}
+
 
 public let defaults                             =   UserDefaults.standard
 public let NO_IMAGE_AVAILABLE                   =   "no-image-available.png"

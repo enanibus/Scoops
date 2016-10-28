@@ -9,6 +9,8 @@
 import UIKit
 
 class AuthorDetailViewController: UIViewController {
+    
+    var indexSelected: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()

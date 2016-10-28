@@ -17,9 +17,10 @@ struct Post {
     var latitud: Double
     var longitud: Double
     let autor: String
-    var estado: Bool
-    var valoracion: Double
-    var disponible: Bool
+    var publicado: Bool
+    var valoracion: Double = 0
+    var numOfVals: Double = 0
+    var paraPublicar: Bool
     var container: String
     
 }

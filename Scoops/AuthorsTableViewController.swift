@@ -9,51 +9,90 @@
 import UIKit
 
 class AuthorsTableViewController: UITableViewController {
+    
+    typealias PostRecord = Dictionary<String, AnyObject>
+
+    var segment = UISegmentedControl()
+    var model: [Dictionary<String, AnyObject>]? = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = []
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.title = "Posts"
+        registerNib()
+        segment.selectedSegmentIndex = 0
+        
         let addPost = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AuthorsTableViewController.addPost))
         self.navigationItem.rightBarButtonItem = addPost
         
         self.tableView.register(UINib(nibName: "NewTableViewCell", bundle: nil), forCellReuseIdentifier: "postCell")
         
-        
-        
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        MSAzureMobile.syncViewWithModel(predicate: nil, withController: self)
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let rows = MSAzureMobile.model?.count {
+            return rows
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            segment = UISegmentedControl(items: ["All", "Published", "Not published"])
+            segment.addTarget(self, action: #selector(AuthorsTableViewController.switchOrderBy), for: UIControlEvents.valueChanged)
+            return segment
+        }
+        return nil
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewTableViewCell.cellID, for: indexPath) as? NewTableViewCell
+        
+        cell!.titulo.text = MSAzureMobile.model![indexPath.row]["titulo"] as? String
+        
+        if let rating = MSAzureMobile.model![indexPath.row]["valoracion"] as? Int{
+            cell!.valoracion.text = String(rating)
+        } else {
+            cell!.valoracion.text = "0"
+        }
+        
+        cell?.autor.text = MSAzureMobile.model![indexPath.row]["autor"] as? String
+        
+        return cell!
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        let authorsVC = AuthorDetailViewController()
+        authorsVC.indexSelected = indexPath.row
+        
+        //Se hace un push en el navigation controller
+        self.navigationController?.pushViewController(authorsVC, animated: true)
+        
+    }
+ 
 
     /*
     // Override to support conditional editing of the table view.
@@ -99,6 +138,26 @@ class AuthorsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Cell registration
+    
+    private func registerNib(){
+        let nib = UINib(nibName: "NewTableViewCell", bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: NewTableViewCell.cellID)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return NewTableViewCell.cellHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return NewTableViewCell.cellHeader
+    }
+    
+    //MARK: - Utils
+    
+
+    
 
 }
 
@@ -108,16 +167,17 @@ extension AuthorsTableViewController {
         
         let tableMS = MSAzureMobile.client.table(withName: "Posts")
         
-        tableMS.insert(["titulo" : "Post1",
-                        "texto" : "texto1",
-                        "foto" : "foto1",
-                        "latitud" : 1.1,
-                        "longitud" : 1.1,
-                        "autor" : "Jacobo Uno",
-                        "publicado" : false,
-                        "valoracion" : 1.1,
-                        "paraPublicar" : false,
-                        "container" : "container1"
+        tableMS.insert(["titulo" : "Titulo3",
+                        "texto" : "Texto3Texto3",
+//                        "foto" : "foto1"
+//                        "latitud" : 1.1,
+//                        "longitud" : 1.1,
+                        "autor" : "Jacobo Tres"
+//                        "publicado" : false,
+//                        "valoracion" : 1.1,
+//                        "numOfVals" : 1,
+//                        "paraPublicar" : false,
+//                        "container" : "container1"
                         ])
         { (result, error) in
             
@@ -125,7 +185,7 @@ extension AuthorsTableViewController {
                 print(error)
                 return
             }
-//            self.readAllItemsInTable()
+            self.readAllItemsInTable()
             print(result)
         }
     }
@@ -135,39 +195,56 @@ extension AuthorsTableViewController {
 
 extension AuthorsTableViewController {
     
-    func insertPost() {
+    func readAllItemsInTable() {
         
-        MSAzureMobile.client.invokeAPI("insertPost", body: ["titulo": "Titulo1", "texto": "texto1"], httpMethod: "POST", parameters: nil, headers: nil) { (result, response, error) in
-            
+        MSAzureMobile.client.invokeAPI("readAllRecords", body: nil, httpMethod: "GET", parameters: nil, headers: nil) { (result, respose, error) in
             
             if let _ = error {
                 print(error)
                 return
             }
             
-//            if !((self.model?.isEmpty)!) {
-//                self.model?.removeAll()
-//            }
-            
-            if let _ = result {
-            
-                print(result)
-                
-//                let json = result as! [AutorRecord]
-//                
-//                for item in json {
-//                    self.model?.append(item)
-//                }
-//                
-//                DispatchQueue.main.async {
-//                    
-//                    self.tableView.reloadData()
-//                }
-                
+            if !((self.model?.isEmpty)!) {
+                self.model?.removeAll()
             }
             
+            if let _ = result {
+                
+                let json = result as! [PostRecord]
+                
+                for item in json {
+                    self.model?.append(item)
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                }
+
+            }
+
+        }
+    }
+}
+
+extension AuthorsTableViewController {
+    
+    func switchOrderBy() {
+        
+        switch segment.selectedSegmentIndex{
+        case 0:
+            print("All posts")
+            MSAzureMobile.syncViewWithModel(predicate: nil, withController: self)
+        case 1:
+            print("Published")
+            MSAzureMobile.syncViewWithModel(predicate: NSPredicate(format: "publicado = true", argumentArray: nil), withController: self)
+        case 2:
+            print("Not published")
+            MSAzureMobile.syncViewWithModel(predicate: NSPredicate(format: "publicado = false", argumentArray: nil), withController: self)
+        default:
+            print("No option")
         }
         
-        
     }
+    
 }

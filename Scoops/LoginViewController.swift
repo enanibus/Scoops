@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
                 
                 MSAzureMobile.client.currentUser = MSUser(userId: userLogged.userId)
                 MSAzureMobile.client.currentUser?.mobileServiceAuthenticationToken = userLogged.token
-                
                 let authorsVC = AuthorsTableViewController()
                 self.navigationController?.pushViewController(authorsVC, animated: true)
             }

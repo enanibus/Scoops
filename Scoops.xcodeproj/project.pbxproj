@@ -34,6 +34,7 @@
 		0A8130C21DB04FEF0034F15B /* ScoopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8130C11DB04FEF0034F15B /* ScoopsTests.swift */; };
 		0A8130CD1DB04FEF0034F15B /* ScoopsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8130CC1DB04FEF0034F15B /* ScoopsUITests.swift */; };
 		0A8B18431DBFEA6B0074752F /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B18421DBFEA6B0074752F /* Defaults.swift */; };
+		0A900EE51DC39A6F00091829 /* MSAzureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A900EE41DC39A6F00091829 /* MSAzureStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		0A8130CC1DB04FEF0034F15B /* ScoopsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoopsUITests.swift; sourceTree = "<group>"; };
 		0A8130CE1DB04FEF0034F15B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A8B18421DBFEA6B0074752F /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		0A900EE41DC39A6F00091829 /* MSAzureStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAzureStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		0A1498191DBE6B3700D4940F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0A900EE41DC39A6F00091829 /* MSAzureStorage.swift */,
 				0A14982A1DBFA52F00D4940F /* MSAzureMobile.swift */,
 				0A8B18421DBFEA6B0074752F /* Defaults.swift */,
 			);
@@ -402,6 +405,7 @@
 				0A8130AA1DB04FEF0034F15B /* AppDelegate.swift in Sources */,
 				0A1498341DBFA96700D4940F /* AuthorDetailViewController.swift in Sources */,
 				0A1498241DBFA2C100D4940F /* LoginViewController.swift in Sources */,
+				0A900EE51DC39A6F00091829 /* MSAzureStorage.swift in Sources */,
 				0A1498311DBFA92B00D4940F /* ReadersTableViewController.swift in Sources */,
 				0A14981B1DBE71A900D4940F /* Post.swift in Sources */,
 			);
