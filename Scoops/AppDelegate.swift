@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initVC = LoginViewController()
         let navC: UINavigationController = UINavigationController(rootViewController: initVC)
         self.window!.rootViewController = navC
-        
-        self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
         
         return true

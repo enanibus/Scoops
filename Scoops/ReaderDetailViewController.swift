@@ -10,6 +10,8 @@ import UIKit
 
 class ReaderDetailViewController: UIViewController {
 
+    var indexSelected: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

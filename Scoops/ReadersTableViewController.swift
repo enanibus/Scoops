@@ -10,9 +10,14 @@ import UIKit
 
 class ReadersTableViewController: UITableViewController {
 
+    typealias PostRecord = Dictionary<String, AnyObject>
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.edgesForExtendedLayout = []
+        
+        self.title = "Posts"
+        registerNib()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,28 +29,53 @@ class ReadersTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        MSAzureMobile.syncViewWithModel(predicate: NSPredicate(format: "publicado = true", argumentArray: nil), withController: self)
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let rows = MSAzureMobile.model?.count {
+            return rows
+        } else {
+            return 0
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewTableViewCell.cellID, for: indexPath) as? NewTableViewCell
+        
+        cell!.titulo.text = MSAzureMobile.model![indexPath.row]["titulo"] as? String
+        
+        if let rating = MSAzureMobile.model![indexPath.row]["valoracion"] as? Int{
+            cell!.valoracion.text = String(rating)
+        } else {
+            cell!.valoracion.text = "0"
+        }
+        
+        cell?.autor.text = MSAzureMobile.model![indexPath.row]["autor"] as? String
+        
+        return cell!
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let readerVC = ReaderDetailViewController()
+        readerVC.indexSelected = indexPath.row
+        
+        self.navigationController?.pushViewController(readerVC, animated: true)
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -91,5 +121,22 @@ class ReadersTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: - Cell registration
+    
+    private func registerNib(){
+        let nib = UINib(nibName: "NewTableViewCell", bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: NewTableViewCell.cellID)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return NewTableViewCell.cellHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return NewTableViewCell.cellHeader
+    }
+    
+    //MARK: - Utils
 
 }

@@ -85,11 +85,10 @@ class AuthorsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let authorsVC = AuthorDetailViewController()
-        authorsVC.indexSelected = indexPath.row
+        let authorVC = AuthorDetailViewController()
+        authorVC.indexSelected = indexPath.row
         
-        //Se hace un push en el navigation controller
-        self.navigationController?.pushViewController(authorsVC, animated: true)
+        self.navigationController?.pushViewController(authorVC, animated: true)
         
     }
  
