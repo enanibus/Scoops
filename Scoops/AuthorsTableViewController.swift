@@ -16,7 +16,6 @@ class AuthorsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-
         self.title = "Scoops"
         registerNib()
         segment.selectedSegmentIndex = 0
@@ -58,15 +57,6 @@ class AuthorsTableViewController: UITableViewController {
             return 0
         }
     }
-    
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if section == 0 {
-//            segment = UISegmentedControl(items: ["Todas", "Publicadas", "No publicadas"])
-//            segment.addTarget(self, action: #selector(AuthorsTableViewController.switchOrderBy), for: UIControlEvents.valueChanged)
-//            return segment
-//        }
-//        return nil
-//    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewTableViewCell.cellID, for: indexPath) as? NewTableViewCell
@@ -94,7 +84,7 @@ class AuthorsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Noticias"
+        return "Noticias - Autor"
     }
  
 

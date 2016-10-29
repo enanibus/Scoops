@@ -9,20 +9,12 @@
 import UIKit
 
 class ReadersTableViewController: UITableViewController {
-
-    typealias PostRecord = Dictionary<String, AnyObject>
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
-        
         self.title = "Scoops"
         registerNib()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,14 +63,14 @@ class ReadersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let readerVC = ReaderDetailViewController()
-        readerVC.indexSelected = indexPath.row
+        readerVC.postSelected = indexPath.row
         
         self.navigationController?.pushViewController(readerVC, animated: true)
         
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Noticias"
+        return "Noticias - Lector"
     }
 
     /*
