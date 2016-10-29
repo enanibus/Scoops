@@ -62,9 +62,9 @@ class ReadersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let readerVC = ReaderDetailViewController()
-        readerVC.postSelected = indexPath.row
-        
+        let _model = MSAzureMobile.model?[indexPath.row]
+        let readerVC = ReaderDetailViewController(model: _model)
+//        readerVC.postSelected = indexPath.row
         self.navigationController?.pushViewController(readerVC, animated: true)
         
     }

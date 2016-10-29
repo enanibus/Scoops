@@ -47,7 +47,11 @@
                     <frame key="frameInset" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem title="👍" id="Q89-8d-Cc1" userLabel="valoracion"/>
+                        <barButtonItem title="👍" id="Q89-8d-Cc1" userLabel="valoracion">
+                            <connections>
+                                <action selector="meGusta:" destination="-1" id="gDW-Gk-o1E"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Autor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2k-1C-Eaw" userLabel="autor">

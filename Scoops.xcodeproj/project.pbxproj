@@ -144,9 +144,9 @@
 				0A1498221DBFA2C100D4940F /* LoginViewController.swift */,
 				0A1498231DBFA2C100D4940F /* LoginViewController.xib */,
 				0A14982E1DBFA7B900D4940F /* AuthorsTableViewController.swift */,
-				0A1498301DBFA92B00D4940F /* ReadersTableViewController.swift */,
 				0A1498321DBFA96700D4940F /* AuthorDetailViewController.swift */,
 				0A1498331DBFA96700D4940F /* AuthorDetailViewController.xib */,
+				0A1498301DBFA92B00D4940F /* ReadersTableViewController.swift */,
 				0A1498361DBFA97800D4940F /* ReaderDetailViewController.swift */,
 				0A1498371DBFA97800D4940F /* ReaderDetailViewController.xib */,
 			);

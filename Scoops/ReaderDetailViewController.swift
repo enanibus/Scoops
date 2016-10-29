@@ -10,15 +10,13 @@ import UIKit
 
 class ReaderDetailViewController: UIViewController {
 
-    var postSelected: Int?
+//    var postSelected: Int?
     
-//    var model : PostRecord{
-//        didSet {
-//            self.syncViewWithModel()
-//        }
-//    }
-    
-//    var model: [AnyObject]?
+    var _model: AnyObject? {
+        didSet {
+            self.syncViewWithModel()
+        }
+    }
     
     @IBOutlet weak var titulo: UILabel!
 
@@ -29,25 +27,32 @@ class ReaderDetailViewController: UIViewController {
     @IBOutlet weak var valoracion: UIBarButtonItem!
     
     //MARK: - Initialization
+    init(model: AnyObject?){
+        self._model = model
+        super.init(nibName: nil, bundle: nil)
+    }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     //MARK: - Actions
+    
+    @IBAction func meGusta(_ sender: AnyObject) {
+    }
     
     func syncViewWithModel(){
         
         // Titulo
-        self.titulo.text = MSAzureMobile.model![postSelected!]["titulo"] as? String
+        self.titulo.text = _model?["titulo"] as? String
         
         // Autor
-        self.autor.text = MSAzureMobile.model![postSelected!]["autor"] as? String
-        // Texto
-        self.texto.text = MSAzureMobile.model![postSelected!]["texto"] as? String
+        self.autor.text = _model?["autor"] as? String
         
-//        if (self.model.valoracion == true) {
-//            self.favorites.title = "🌟"
-//        }else{
-//            self.favorites.title = "⭐️"
-//        }
+        // Texto
+        self.texto.text = _model?["texto"] as? String
+        
+        
         
     }
     
@@ -65,16 +70,5 @@ class ReaderDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         syncViewWithModel()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
