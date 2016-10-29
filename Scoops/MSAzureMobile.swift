@@ -27,7 +27,7 @@ class MSAzureMobile: NSObject {
             query.predicate = predicateQuery
         }
         
-        query.order(byAscending: "titulo")
+        query.order(byDescending: "updatedAt")
         query.read { (result, error) in
             
             if let _ = error {

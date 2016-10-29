@@ -16,7 +16,7 @@ class ReadersTableViewController: UITableViewController {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
         
-        self.title = "Posts"
+        self.title = "Scoops"
         registerNib()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -75,6 +75,10 @@ class ReadersTableViewController: UITableViewController {
         
         self.navigationController?.pushViewController(readerVC, animated: true)
         
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Noticias"
     }
 
     /*

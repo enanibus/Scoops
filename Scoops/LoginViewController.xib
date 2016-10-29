@@ -19,7 +19,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctZ-Vh-OsG">
                     <frame key="frameInset" minX="109" minY="288" width="157" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Login Authors"/>
+                    <state key="normal" title="Login Autores"/>
                     <connections>
                         <action selector="loginAuthors:" destination="-1" eventType="touchUpInside" id="new-kw-Hio"/>
                     </connections>
@@ -27,7 +27,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1Q-xt-GuQ">
                     <frame key="frameInset" minX="119" minY="349" width="137" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Login Readers"/>
+                    <state key="normal" title="Login Lectores"/>
                     <connections>
                         <action selector="loginReaders:" destination="-1" eventType="touchUpInside" id="Kn3-B3-Odk"/>
                     </connections>

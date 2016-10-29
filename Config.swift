@@ -15,6 +15,7 @@ enum StatusNews: Int{
     case SinPublicar = 2
 }
 
+typealias PostRecord = Dictionary<String, AnyObject>
 
 public let defaults                             =   UserDefaults.standard
 public let NO_IMAGE_AVAILABLE                   =   "no-image-available.png"

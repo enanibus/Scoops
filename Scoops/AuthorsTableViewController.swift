@@ -9,8 +9,6 @@
 import UIKit
 
 class AuthorsTableViewController: UITableViewController {
-    
-    typealias PostRecord = Dictionary<String, AnyObject>
 
     var segment = UISegmentedControl()
     var model: [Dictionary<String, AnyObject>]? = []
@@ -19,9 +17,12 @@ class AuthorsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
 
-        self.title = "Posts"
+        self.title = "Scoops"
         registerNib()
         segment.selectedSegmentIndex = 0
+        segment = UISegmentedControl(items: ["Todas", "Publicadas", "No publicadas"])
+        segment.addTarget(self, action: #selector(AuthorsTableViewController.switchOrderBy), for: UIControlEvents.valueChanged)
+        self.navigationItem.titleView = segment
         
         let addPost = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AuthorsTableViewController.addPost))
         self.navigationItem.rightBarButtonItem = addPost
@@ -58,14 +59,14 @@ class AuthorsTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            segment = UISegmentedControl(items: ["All", "Published", "Not published"])
-            segment.addTarget(self, action: #selector(AuthorsTableViewController.switchOrderBy), for: UIControlEvents.valueChanged)
-            return segment
-        }
-        return nil
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if section == 0 {
+//            segment = UISegmentedControl(items: ["Todas", "Publicadas", "No publicadas"])
+//            segment.addTarget(self, action: #selector(AuthorsTableViewController.switchOrderBy), for: UIControlEvents.valueChanged)
+//            return segment
+//        }
+//        return nil
+//    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewTableViewCell.cellID, for: indexPath) as? NewTableViewCell
@@ -90,6 +91,10 @@ class AuthorsTableViewController: UITableViewController {
         
         self.navigationController?.pushViewController(authorVC, animated: true)
         
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Noticias"
     }
  
 
@@ -232,16 +237,12 @@ extension AuthorsTableViewController {
         
         switch segment.selectedSegmentIndex{
         case 0:
-            print("All posts")
             MSAzureMobile.syncViewWithModel(predicate: nil, withController: self)
         case 1:
-            print("Published")
             MSAzureMobile.syncViewWithModel(predicate: NSPredicate(format: "publicado = true", argumentArray: nil), withController: self)
         case 2:
-            print("Not published")
             MSAzureMobile.syncViewWithModel(predicate: NSPredicate(format: "publicado = false", argumentArray: nil), withController: self)
-        default:
-            print("No option")
+        default: break
         }
         
     }
