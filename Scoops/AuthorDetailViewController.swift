@@ -218,7 +218,6 @@ extension AuthorDetailViewController: UIImagePickerControllerDelegate {
         self.dismiss(animated: true){}
         let image = info[UIImagePickerControllerOriginalImage] as!  UIImage?
         if (image != nil){
-
             imageData = UIImageJPEGRepresentation(image!, 0.9) as NSData?
             self.foto.image = image
             uploadBlob(image!)
@@ -232,14 +231,9 @@ extension AuthorDetailViewController {
     
     func uploadBlob(_ image: UIImage) {
         
-        // No hace falta, se hace en el viewDidLoad del TableView
-//        MSAzureStorage.setupAzureClient()
-        
         // crear el blob local
         self.blobName = UUID().uuidString
         let myBlob = MSAzureStorage.blobContainer?.blockBlobReference(fromName: self.blobName)
-
-        // tomamos una foto o la cogemos de los recursos (parámetro)
         
         // subir
         myBlob?.upload(from: UIImageJPEGRepresentation(image, 0.5)!, completionHandler: { (error) in

@@ -10,6 +10,9 @@ import UIKit
 
 class ReaderDetailViewController: UIViewController {
     
+    var blobName : String = "no-image-available.png"
+    var imageData : NSData?
+    
     var _model: AnyObject? {
         didSet {
             self.syncViewWithModel()
@@ -27,6 +30,8 @@ class ReaderDetailViewController: UIViewController {
     @IBOutlet weak var numOfVals: UILabel!
 
     @IBOutlet weak var valor: UILabel!
+    
+    @IBOutlet weak var foto: UIImageView!
     
     @IBOutlet weak var stepper: UIStepper!
     
@@ -82,6 +87,9 @@ class ReaderDetailViewController: UIViewController {
         let valoracion = self._model?["valoracion"] as! NSNumber
         self.valoracion.text = valoracion.description
         
+        //Foto
+        self.getImage()
+        
         // Valoraciones
         let numOfVals = self._model?["numOfVals"] as? NSInteger
         self.numOfVals.text = numOfVals?.description
@@ -106,3 +114,53 @@ class ReaderDetailViewController: UIViewController {
     }
 
 }
+
+// MARK: - Gestión de imagen y storage
+
+extension ReaderDetailViewController {
+    
+    func uploadBlob(_ image: UIImage) {
+        
+        // crear el blob local
+        self.blobName = UUID().uuidString
+        let myBlob = MSAzureStorage.blobContainer?.blockBlobReference(fromName: self.blobName)
+        
+        // subir
+        myBlob?.upload(from: UIImageJPEGRepresentation(image, 0.5)!, completionHandler: { (error) in
+            
+            if (error != nil) {
+                print(error)
+                return
+            }
+            
+        })
+        
+    }
+    
+    func getImage()  {
+        let foto = self._model?["foto"] as? String
+        if foto != nil{
+            if !((foto?.isEmpty)!){
+                
+                let myBlob = AZSCloudBlockBlob(container: MSAzureStorage.blobContainer!, name: foto!)
+                
+                myBlob.downloadToData(completionHandler: { (error, data) in
+                    if let _ = error {
+                        print(error)
+                        return
+                    }
+                    if let _ = data {
+                        let img = UIImage(data: data!)
+                        print("Imagen leida OK")
+                        DispatchQueue.main.async {
+                            let resIm = img?.resizeWith(width: self.foto.bounds.height)
+                            self.foto.image = resIm
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+}
+

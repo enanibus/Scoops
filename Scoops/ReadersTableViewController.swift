@@ -12,6 +12,7 @@ class ReadersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAzureStorage.setupAzureClient()
         self.edgesForExtendedLayout = []
         self.title = "Scoops"
         registerNib()

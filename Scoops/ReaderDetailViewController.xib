@@ -12,6 +12,7 @@
                 <outlet property="Texto" destination="856-NJ-hdJ" id="NEz-sN-SCn"/>
                 <outlet property="Titulo" destination="Ey6-dy-3ue" id="lDi-Sn-Rtl"/>
                 <outlet property="autor" destination="k2k-1C-Eaw" id="lt5-oi-hlG"/>
+                <outlet property="foto" destination="dqz-WJ-ZwH" id="wuQ-8a-Ode"/>
                 <outlet property="numOfVals" destination="94X-PY-Luk" id="qqN-pg-DQA"/>
                 <outlet property="stepper" destination="iDz-J0-arO" id="AqD-ZE-hmM"/>
                 <outlet property="texto" destination="856-NJ-hdJ" id="oYk-M4-zgP"/>
@@ -33,7 +34,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no-image-available.png" translatesAutoresizingMaskIntoConstraints="NO" id="dqz-WJ-ZwH">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="no-image-available.png" translatesAutoresizingMaskIntoConstraints="NO" id="dqz-WJ-ZwH" userLabel="foto">
                     <frame key="frameInset" minX="19" minY="331" width="337" height="204"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
