@@ -62,22 +62,6 @@ class AuthorDetailViewController: UIViewController {
                 "foto": self.blobName
             ]
             
-//                if error != nil{
-//                    print("Tenemos un error -> : \(error)")
-//                    self.showMessage("No se ha podido crear la noticia", withTitle: "Error")
-//                } else {
-//                    
-//                    // 2: Persistir el blob en el Storage siempre y cuando haya imagen
-//                    if self.myBlobName != "noImage.png" {
-//                        FHLAzureCommunication.uploadToStorage(self.myImage!, blobName: self.myBlobName)
-//                    }
-//                    self.insertedObject = inserted
-//                    self.disponible.enabled = true
-//                    self.showMessage("Noticia Creada", withTitle: "Información")
-//                    
-//                }
-//            })
-            
             tableMS.insert(postDraft) { (result, error) in
                 
                 if let _ = error {
