@@ -10,8 +10,10 @@ import UIKit
 
 class MSAzureStorage: NSObject {
     
-    static let ACCOUNT_NAME   = "boot3jacobo"
-    static let ACCOUNT_KEY    = "XE9YzFYhDayDFvq4oNGsxoWJUc4y+xZWTH1v3Bb3BntZHiJXqOeidF+GexDro6fKd2JYrNCR/J9FeQLPLC+E3w=="
+    public static let ACCOUNT_NAME   = "boot3jacobo"
+//    public static let ACCOUNT_KEY    = "XE9YzFYhDayDFvq4oNGsxoWJUc4y+xZWTH1v3Bb3BntZHiJXqOeidF+GexDro6fKd2JYrNCR/J9FeQLPLC+E3w=="
+    public static let ACCOUNT_KEY    = "CfXq7PIAWz+XwaqnuNvLcfPUjTQaGBjuW/D6rntMXMcke2rNuL4qp8v4Wpg/R+ajaPpggPFpTpH3ORSsDrslLA=="
+
     static let BLOB_ENDPOINT    = "https://boot3jacobo.blob.core.windows.net/"
     
     static var blobClient: AZSCloudBlobClient?
@@ -27,7 +29,7 @@ class MSAzureStorage: NSObject {
             
             blobClient = account.getBlobClient()
             
-            blobContainer = blobClient?.containerReference(fromName: "scoops")
+            blobContainer = blobClient?.containerReference(fromName: "posts")
             
         } catch let error {
             print(error)

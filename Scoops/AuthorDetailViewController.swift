@@ -93,6 +93,7 @@ class AuthorDetailViewController: UIViewController {
             self.postDraft["autor"] = self.autor.text
             self.postDraft["titulo"] = self.titulo.text
             self.postDraft["texto"] = self.texto.text
+            self.postDraft["foto"] = self.blobName
             
             tableMS.update(postDraft) { (result, error) in
                 
@@ -163,6 +164,9 @@ class AuthorDetailViewController: UIViewController {
         let valoracion = self._model?["valoracion"] as! NSNumber
         self.valoracion.text = valoracion.description
         
+        //Foto
+        self.getImage()
+        
         // Cambiar texto del botón de actualización
         if (self._model == nil) {
             self.aniadir.title = "Añadir"
@@ -193,6 +197,7 @@ class AuthorDetailViewController: UIViewController {
             let tap = UITapGestureRecognizer(target: self, action: #selector(AuthorDetailViewController.takePhoto(_:)))
             self.foto.addGestureRecognizer(tap)
         }
+        self.getImage()
     }
 
     override func didReceiveMemoryWarning() {
@@ -213,10 +218,9 @@ extension AuthorDetailViewController: UIImagePickerControllerDelegate {
         self.dismiss(animated: true){}
         let image = info[UIImagePickerControllerOriginalImage] as!  UIImage?
         if (image != nil){
-//           subir la foto a Storage
+
             imageData = UIImageJPEGRepresentation(image!, 0.9) as NSData?
             self.foto.image = image
-            self.blobName = "image-\(NSUUID().uuidString).jpeg"
             uploadBlob(image!)
         }
     }
@@ -232,21 +236,46 @@ extension AuthorDetailViewController {
 //        MSAzureStorage.setupAzureClient()
         
         // crear el blob local
-        let blobFile = UUID().uuidString
-        let myBlob = MSAzureStorage.blobContainer?.blockBlobReference(fromName: blobFile)
+        self.blobName = UUID().uuidString
+        let myBlob = MSAzureStorage.blobContainer?.blockBlobReference(fromName: self.blobName)
 
         // tomamos una foto o la cogemos de los recursos (parámetro)
         
         // subir
         myBlob?.upload(from: UIImageJPEGRepresentation(image, 0.5)!, completionHandler: { (error) in
             
-            if error != nil {
+            if (error != nil) {
                 print(error)
                 return
             }
 
         })
         
+    }
+    
+    func getImage()  {
+        let foto = self._model?["foto"] as? String
+        if foto != nil{
+            if !((foto?.isEmpty)!){
+                
+                let myBlob = AZSCloudBlockBlob(container: MSAzureStorage.blobContainer!, name: foto!)
+                
+                myBlob.downloadToData(completionHandler: { (error, data) in
+                    if let _ = error {
+                        print(error)
+                        return
+                    }
+                    if let _ = data {
+                        let img = UIImage(data: data!)
+                        print("Imagen leida OK")
+                        DispatchQueue.main.async {
+                            let resIm = img?.resizeWith(width: self.foto.bounds.height)
+                            self.foto.image = resIm
+                        }
+                    }
+                })
+            }
+        }
     }
     
 }
