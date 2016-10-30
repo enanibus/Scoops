@@ -124,6 +124,27 @@ class AuthorDetailViewController: UIViewController {
     }
     
     @IBAction func publicar(_ sender: AnyObject) {
+        let tableMS = MSAzureMobile.client.table(withName: "Posts")
+        let publicado = self._model?["publicado"] as! Bool
+        let paraPublicar = self._model?["paraPublicar"] as! Bool
+        
+        self.postDraft["id"] = self._model?["id"] as! String?
+        
+        if (paraPublicar || publicado == true) {
+            self.postDraft["paraPublicar"] = "0"
+        } else{
+            self.postDraft["paraPublicar"] = "1"
+        }
+        
+        tableMS.update(postDraft) { (result, error) in
+            
+            if let _ = error {
+                print(error)
+                return
+            }
+            print(result)
+            let _ = self.navigationController?.popViewController(animated: true)
+        }
         
     }
     
@@ -151,6 +172,15 @@ class AuthorDetailViewController: UIViewController {
             self.aniadir.title = "Modificar"
         }
         
+        // Cambiar texto de publicación despublicación en el backend
+        let publicado = self._model?["publicado"] as! Bool
+        let paraPublicar = self._model?["paraPublicar"] as! Bool
+        
+        if (paraPublicar || publicado == true) {
+            self.publicar.title="No publicar"
+        }else{
+            self.publicar.title="Publicar"
+        }
     }
     
     
