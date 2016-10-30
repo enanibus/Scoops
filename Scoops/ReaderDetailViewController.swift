@@ -151,7 +151,6 @@ extension ReaderDetailViewController {
                     }
                     if let _ = data {
                         let img = UIImage(data: data!)
-                        print("Imagen leida OK")
                         DispatchQueue.main.async {
                             let resIm = img?.resizeWith(width: self.foto.bounds.height)
                             self.foto.image = resIm
