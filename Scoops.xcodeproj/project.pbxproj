@@ -25,6 +25,7 @@
 		0A65EE231DB7ECC800514920 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE221DB7ECC800514920 /* libxml2.2.tbd */; };
 		0A65EE2A1DB83BE400514920 /* MicrosoftAzureMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE291DB83BE400514920 /* MicrosoftAzureMobile.framework */; };
 		0A65EE2C1DB83D8300514920 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A65EE2B1DB83D8300514920 /* WebKit.framework */; };
+		0A70D6E61DC5938900817912 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A70D6E51DC5938900817912 /* UIImage+Resize.swift */; };
 		0A8130AA1DB04FEF0034F15B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8130A91DB04FEF0034F15B /* AppDelegate.swift */; };
 		0A8130AC1DB04FEF0034F15B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8130AB1DB04FEF0034F15B /* ViewController.swift */; };
 		0A8130AF1DB04FEF0034F15B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8130AD1DB04FEF0034F15B /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		0A65EE241DB802EC00514920 /* Scoops-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Scoops-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A65EE291DB83BE400514920 /* MicrosoftAzureMobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MicrosoftAzureMobile.framework; sourceTree = "<group>"; };
 		0A65EE2B1DB83D8300514920 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		0A70D6E51DC5938900817912 /* UIImage+Resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		0A8130A61DB04FEF0034F15B /* Scoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8130A91DB04FEF0034F15B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8130AB1DB04FEF0034F15B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				0A900EE41DC39A6F00091829 /* MSAzureStorage.swift */,
 				0A14982A1DBFA52F00D4940F /* MSAzureMobile.swift */,
 				0A8B18421DBFEA6B0074752F /* Defaults.swift */,
+				0A70D6E51DC5938900817912 /* UIImage+Resize.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				0A14982B1DBFA52F00D4940F /* MSAzureMobile.swift in Sources */,
 				0A14983C1DBFB82600D4940F /* Config.swift in Sources */,
 				0A8130B21DB04FEF0034F15B /* Scoops.xcdatamodeld in Sources */,
+				0A70D6E61DC5938900817912 /* UIImage+Resize.swift in Sources */,
 				0A8130AA1DB04FEF0034F15B /* AppDelegate.swift in Sources */,
 				0A1498341DBFA96700D4940F /* AuthorDetailViewController.swift in Sources */,
 				0A1498241DBFA2C100D4940F /* LoginViewController.swift in Sources */,

@@ -11,7 +11,6 @@ import CoreLocation
 
 class AuthorDetailViewController: UIViewController {
     
-//    var postSelected: Int?
     var postDraft = [String:String]()
     var blobName : String = "no-image-available.png"
     var imageData : NSData?
@@ -218,7 +217,37 @@ extension AuthorDetailViewController: UIImagePickerControllerDelegate {
             imageData = UIImageJPEGRepresentation(image!, 0.9) as NSData?
             self.foto.image = image
             self.blobName = "image-\(NSUUID().uuidString).jpeg"
+            uploadBlob(image!)
         }
     }
+}
+
+// MARK: - Gestión de imagen y storage
+
+extension AuthorDetailViewController {
+    
+    func uploadBlob(_ image: UIImage) {
+        
+        // No hace falta, se hace en el viewDidLoad del TableView
+//        MSAzureStorage.setupAzureClient()
+        
+        // crear el blob local
+        let blobFile = UUID().uuidString
+        let myBlob = MSAzureStorage.blobContainer?.blockBlobReference(fromName: blobFile)
+
+        // tomamos una foto o la cogemos de los recursos (parámetro)
+        
+        // subir
+        myBlob?.upload(from: UIImageJPEGRepresentation(image, 0.5)!, completionHandler: { (error) in
+            
+            if error != nil {
+                print(error)
+                return
+            }
+
+        })
+        
+    }
+    
 }
 

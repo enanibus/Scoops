@@ -38,4 +38,16 @@ class MSAzureMobile: NSObject {
             withController.tableView.reloadData()
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

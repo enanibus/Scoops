@@ -15,6 +15,7 @@ class AuthorsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAzureStorage.setupAzureClient()
         self.edgesForExtendedLayout = []
         self.title = "Scoops"
         registerNib()
@@ -78,7 +79,6 @@ class AuthorsTableViewController: UITableViewController {
 
         let _model = MSAzureMobile.model?[indexPath.row]
         let authorVC = AuthorDetailViewController(model: _model)
-//        authorVC.postSelected = indexPath.row
         
         self.navigationController?.pushViewController(authorVC, animated: true)
         
