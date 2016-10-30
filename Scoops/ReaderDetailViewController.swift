@@ -9,8 +9,6 @@
 import UIKit
 
 class ReaderDetailViewController: UIViewController {
-
-//    var postSelected: Int?
     
     var _model: AnyObject? {
         didSet {
@@ -24,8 +22,39 @@ class ReaderDetailViewController: UIViewController {
     
     @IBOutlet weak var texto: UITextView!
 
-    @IBOutlet weak var valoracion: UIBarButtonItem!
+    @IBOutlet weak var valoracion: UILabel!
     
+    @IBOutlet weak var numOfVals: UILabel!
+
+    @IBOutlet weak var valor: UILabel!
+    
+    @IBOutlet weak var stepper: UIStepper!
+    
+    @IBAction func cambiarValor(_ sender: UIStepper) {
+        let value: Int = Int(sender.value)
+        self.valor.text = value.description
+    }
+    
+    @IBAction func valorar(_ sender: AnyObject) {
+        var params = Dictionary<String,String>()
+        
+        params = ["id" : self._model?["id"] as! String,
+                  "valoracion" : self.valor.text!]
+        
+        MSAzureMobile.client.invokeAPI("valorar", body: nil, httpMethod: "PUT", parameters: params, headers: nil) { (data, result, error) in
+            
+            if let _ = error {
+                print (error)
+            } else{
+                print(data)
+                
+                DispatchQueue.main.async {
+                    self.syncViewWithModel()
+                }
+            }
+        }
+    }
+
     //MARK: - Initialization
     init(model: AnyObject?){
         self._model = model
@@ -38,26 +67,31 @@ class ReaderDetailViewController: UIViewController {
 
     //MARK: - Actions
     
-    @IBAction func meGusta(_ sender: AnyObject) {
-    }
-    
     func syncViewWithModel(){
         
         // Titulo
-        self.titulo.text = _model?["titulo"] as? String
+        self.titulo.text = self._model?["titulo"] as? String
         
         // Autor
-        self.autor.text = _model?["autor"] as? String
+        self.autor.text = self._model?["autor"] as? String
         
         // Texto
-        self.texto.text = _model?["texto"] as? String
+        self.texto.text = self._model?["texto"] as? String
         
+        //Valoración
+        let valoracion = self._model?["valoracion"] as! NSNumber
+        self.valoracion.text = valoracion.description
         
+        // Valoraciones
+        let numOfVals = self._model?["numOfVals"] as? NSInteger
+        self.numOfVals.text = numOfVals?.description
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.stepper.minimumValue = 0
+        self.stepper.maximumValue = 10
         syncViewWithModel()
     }
 

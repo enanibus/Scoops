@@ -49,8 +49,8 @@ class ReadersTableViewController: UITableViewController {
         
         cell!.titulo.text = MSAzureMobile.model![indexPath.row]["titulo"] as? String
         
-        if let rating = MSAzureMobile.model![indexPath.row]["valoracion"] as? Int{
-            cell!.valoracion.text = String(rating)
+        if let val = MSAzureMobile.model![indexPath.row]["valoracion"] as? Int{
+            cell!.valoracion.text = String(val)
         } else {
             cell!.valoracion.text = "0"
         }
@@ -64,7 +64,6 @@ class ReadersTableViewController: UITableViewController {
         
         let _model = MSAzureMobile.model?[indexPath.row]
         let readerVC = ReaderDetailViewController(model: _model)
-//        readerVC.postSelected = indexPath.row
         self.navigationController?.pushViewController(readerVC, animated: true)
         
     }

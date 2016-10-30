@@ -63,8 +63,8 @@ class AuthorsTableViewController: UITableViewController {
         
         cell!.titulo.text = MSAzureMobile.model![indexPath.row]["titulo"] as? String
         
-        if let rating = MSAzureMobile.model![indexPath.row]["valoracion"] as? Int{
-            cell!.valoracion.text = String(rating)
+        if let val = MSAzureMobile.model![indexPath.row]["valoracion"] as? Int{
+            cell!.valoracion.text = String(val)
         } else {
             cell!.valoracion.text = "0"
         }
@@ -76,8 +76,9 @@ class AuthorsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let authorVC = AuthorDetailViewController()
-        authorVC.indexSelected = indexPath.row
+        let _model = MSAzureMobile.model?[indexPath.row]
+        let authorVC = AuthorDetailViewController(model: _model)
+//        authorVC.postSelected = indexPath.row
         
         self.navigationController?.pushViewController(authorVC, animated: true)
         
@@ -158,34 +159,10 @@ class AuthorsTableViewController: UITableViewController {
 extension AuthorsTableViewController {
     
     func addPost() {
-        
-        let tableMS = MSAzureMobile.client.table(withName: "Posts")
-        
-        tableMS.insert(["titulo" : "Titulo3",
-                        "texto" : "Texto3Texto3",
-//                        "foto" : "foto1"
-//                        "latitud" : 1.1,
-//                        "longitud" : 1.1,
-                        "autor" : "Jacobo Tres"
-//                        "publicado" : false,
-//                        "valoracion" : 1.1,
-//                        "numOfVals" : 1,
-//                        "paraPublicar" : false,
-//                        "container" : "container1"
-                        ])
-        { (result, error) in
-            
-            if let _ = error {
-                print(error)
-                return
-            }
-            self.readAllItemsInTable()
-            print(result)
-        }
+        let newVC = AuthorDetailViewController(model: nil)
+        self.navigationController?.pushViewController(newVC, animated: true)
     }
 }
-
-
 
 extension AuthorsTableViewController {
     
