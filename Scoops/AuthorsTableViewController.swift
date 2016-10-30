@@ -19,7 +19,6 @@ class AuthorsTableViewController: UITableViewController {
         self.edgesForExtendedLayout = []
         self.title = "Scoops"
         registerNib()
-        segment.selectedSegmentIndex = 0
         segment = UISegmentedControl(items: ["Todas", "Publicadas", "No publicadas"])
         segment.addTarget(self, action: #selector(AuthorsTableViewController.switchOrderBy), for: UIControlEvents.valueChanged)
         self.navigationItem.titleView = segment
@@ -40,7 +39,6 @@ class AuthorsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         MSAzureMobile.syncViewWithModel(predicate: nil, withController: self)
-        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source

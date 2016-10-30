@@ -11,7 +11,6 @@ import UIKit
 class MSAzureStorage: NSObject {
     
     public static let ACCOUNT_NAME   = "boot3jacobo"
-//    public static let ACCOUNT_KEY    = "XE9YzFYhDayDFvq4oNGsxoWJUc4y+xZWTH1v3Bb3BntZHiJXqOeidF+GexDro6fKd2JYrNCR/J9FeQLPLC+E3w=="
     public static let ACCOUNT_KEY    = "CfXq7PIAWz+XwaqnuNvLcfPUjTQaGBjuW/D6rntMXMcke2rNuL4qp8v4Wpg/R+ajaPpggPFpTpH3ORSsDrslLA=="
 
     static let BLOB_ENDPOINT    = "https://boot3jacobo.blob.core.windows.net/"

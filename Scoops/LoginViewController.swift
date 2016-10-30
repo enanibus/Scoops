@@ -57,38 +57,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginReaders(_ sender: AnyObject) {
-        
-        if isUserLogged() {
-            
-            if let userLogged = getCredentialsFromDefaults() {
-                
-                MSAzureMobile.client.currentUser = MSUser(userId: userLogged.userId)
-                MSAzureMobile.client.currentUser?.mobileServiceAuthenticationToken = userLogged.token
                 
                 let readersVC = ReadersTableViewController()
                 self.navigationController?.pushViewController(readersVC, animated: true)
-            }
-            
-            
-        } else {
-            
-            MSAzureMobile.client.login(withProvider: AUTHENTICATION_PROVIDER,
-                                       controller: self,
-                                       animated: true, completion: { (user, error) in
-                                        
-                                        if let _ = error {
-                                            print(error)
-                                            return
-                                        }
-                                        
-                                        if let _ = user {
-                                            addCredentialsToDefaults(withCurrentUser: user)
-                                            let readersVC = ReadersTableViewController()
-                                            self.navigationController?.pushViewController(readersVC, animated: true)
-                                        }
-            })
-            
-        }
     }
 
     /*
